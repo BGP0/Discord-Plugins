@@ -1,13 +1,17 @@
 /**
  * @name DeveloperExperiments
  * @description Grants access to features for discord staff such as experiments tab
- * @author BGP2, CAEC64
+ * @author BGP, CAEC64
  * @version 1.0.0
- * @source https://github.com/BGP0/Discord-Plugins/rawfile
- * @updateUrl https://github.com/BGP0/Discord-Plugins/rawfile
+ * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
+const version = Number("1.0.0".replaceAll('.', ''))
+const fs = require("fs")
 
 function setDev(b) {
+	// Current method mostly by me, sets the staff flag and then reloads the developer experiments.
+	// Requries no libraries, but idk how to undo it without reloading discord
 	window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { // Weird thing to get loads of webpack data
 		var stuff = Object.values(req.c) // We don't care about the keys of the webpack data
 
@@ -20,6 +24,15 @@ function setDev(b) {
 }
 
 module.exports = class {
+	load() { // Because @updateUrl still isn't implemented and using a zeres library is bloat + requires plugin to be verified
+		fetch("https://cdn.jsdelivr.net/gh/BGP0/Discord-Plugins@main/ExperimentsPlugin/DeveloperExperiments.plugin.js").then(res => res.text()).then(res => {
+			let oldVersion = Number(res.substring(res.indexOf("version") + 8, res.indexOf("version") + 13).replaceAll('.', ''))
+			if (oldVersion > version) {
+				console.log("UPDATING!")
+				fs.writeFile(`${BdApi.Plugins.folder}/DeveloperExperiments2.plugin.js`, res)
+			}
+		})
+	}
 	start() {
 		setDev(1)
 	}
