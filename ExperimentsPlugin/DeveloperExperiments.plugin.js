@@ -2,11 +2,11 @@
  * @name DeveloperExperiments
  * @description Grants access to features for discord staff such as experiments tab
  * @author BGP, CAEC64
- * @version 1.0.3
+ * @version 1.0.4
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
-const version = Number("1.0.3".replaceAll('.', ''))
+const version = Number("1.0.4".replaceAll('.', ''))
 const fs = require("fs")
 
 function setDev(b) {
@@ -20,6 +20,7 @@ function setDev(b) {
 
 		user.flags += b == true ? 1 : -1 // Add/Remove the staff key (2^0)
 		mall.find(x => x.name == "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]() // Open the store with our new key, idk how to close yet
+		try {mall.find(x => x.name == "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({user: {flags: 1}})} catch(_) {} // will throw some errors as the function expects more parameters, but it will still let us use buttons even with the exception
 	}])
 }
 
