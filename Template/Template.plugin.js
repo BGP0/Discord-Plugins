@@ -9,7 +9,7 @@
 
 module.exports = class TemplatePlugin {
     async start() {
-        test = await ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+        var test = await ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
         console.log(test)
         console.log("Hello world!")
     }
