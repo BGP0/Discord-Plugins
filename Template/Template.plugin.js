@@ -2,7 +2,7 @@
  * @name Template
  * @author BGP
  * @description Just a simple template
- * @version 1.0.2
+ * @version 1.0.3
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/Template/Template.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/Template/Template.plugin.js
  */
@@ -24,7 +24,7 @@ module.exports = class TemplatePlugin {
                         if (error) {
                             return electron.shell.openExternal("https://github.com/rauenzi/BDPluginLibrary");
                         }
-                        fs.writeFileSync(path.join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"), body);
+                        require("fs").writeFileSync(path.join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"), body);
                     });
                 }
             });

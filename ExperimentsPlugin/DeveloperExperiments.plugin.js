@@ -2,16 +2,15 @@
  * @name DeveloperExperiments
  * @description Grants access to features for discord staff such as experiments tab
  * @author BGP, CAEC64
- * @version 1.0.5
+ * @version 1.0.6
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
-const version = Number("1.0.5".replaceAll('.', ''))
-const fs = require("fs")
 
 function setDev(b) {
 	// Current method mostly by me, sets the staff flag and then reloads the developer experiments.
 	// Requries no libraries, but idk how to undo it without reloading discord
+	// This also has the side effect of giving you the developer badge (client side) in some cases
 	window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { // Weird thing to get loads of webpack data
 		var stuff = Object.values(req.c) // We don't care about the keys of the webpack data
 
@@ -25,15 +24,6 @@ function setDev(b) {
 }
 
 module.exports = class {
-	load() { // Because @updateUrl still isn't implemented and using a zeres library is bloat + requires plugin to be verified
-		fetch("https://bgp0.github.io/Discord-Plugins/ExperimentsPlugin/DeveloperExperiments.plugin.js", {cache: "no-store"}).then(res => res.text()).then(res => {
-			let newVersion = Number(res.substring(res.indexOf("version") + 8, res.indexOf("version") + 13).replaceAll('.', ''))
-			if (newVersion > version) {
-				console.log("UPDATING!")
-				fs.writeFile(`${BdApi.Plugins.folder}/DeveloperExperiments.plugin.js`, res)
-			}
-		})
-	}
 	start() {
 		setDev(1)
 	}
@@ -41,4 +31,26 @@ module.exports = class {
 	stop() {
 		setDev(0)
 	}
+    
+    load() {
+        if (!global.ZeresPluginLibrary) {
+            BdApi.showConfirmationModal("Library plugin is needed",
+                `ZeresPluginLibrary is missing. Please click Download Now to install it.`, {
+                confirmText: "Download",
+                cancelText: "Cancel",
+                onConfirm: () => {
+                    request.get("https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js", (error, response, body) => {
+                        if (error) {
+                            return electron.shell.openExternal("https://github.com/rauenzi/BDPluginLibrary");
+                        }
+                        require("fs").writeFileSync(path.join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"), body);
+                    });
+                }
+            });
+        } else ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+    }
+
+    constructor(c) {
+        this.config = c
+    }
 }
