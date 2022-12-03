@@ -1,15 +1,14 @@
 /**
  * @name Template
  * @author BGP
- * @description Just a template
- * @version 1.0.1
+ * @description Just a simple template
+ * @version 1.0.2
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/Template/Template.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/Template/Template.plugin.js
  */
 
 module.exports = class TemplatePlugin {
-    async start() {
-        await ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+    start() {
         console.log("Hello world!")
     }
     stop() {}
@@ -29,7 +28,7 @@ module.exports = class TemplatePlugin {
                     });
                 }
             });
-        }
+        } else ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
     }
 
     constructor(c) {
