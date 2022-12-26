@@ -2,7 +2,7 @@
  * @name MassDelete
  * @author BGP
  * @description Delete as many messages by you as in your current channel's cache
- * @version 1.0.4
+ * @version 1.0.5
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/MassDeletePlugin/MassDelete.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/MassDeletePlugin/MassDelete.plugin.js
  */
