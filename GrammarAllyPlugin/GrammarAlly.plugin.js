@@ -2,7 +2,7 @@
  * @name GrammarAlly
  * @author CAEC
  * @description This got my friend his "PhD in trolling"
- * @version 1.0.0
+ * @version 1.0.2
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/GrammarAlly/GrammarAlly.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/GrammarAlly/GrammarAlly.plugin.js
  */
@@ -13,9 +13,9 @@ module.exports = class GrammarAllyPlugin {
         this.messageModule = BdApi.findModuleByProps("sendMessage")
         this.vanillaSendMessage = this.messageModule.sendMessage
 
-        this.messageModule.sendMessage = (channelId, message) => {
+        this.messageModule.sendMessage = (channelId, message, a, b) => {
             message.content = this.transformMessage(message.content)
-            this.vanillaSendMessage(channelId, message)
+            this.vanillaSendMessage(channelId, message, a, b)
         }
     }
 
@@ -51,7 +51,7 @@ module.exports = class GrammarAllyPlugin {
             "randomlyDoubleWords": 0,
             "basicUwUifier": false,
             "randomToggleCase": 0,
-            "randomSwapChars": 5
+            "randomSwapChars": 0.2
         })
     }
 
