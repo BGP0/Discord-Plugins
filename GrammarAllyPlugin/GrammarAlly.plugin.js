@@ -2,7 +2,7 @@
  * @name GrammarAlly
  * @author CAEC
  * @description This got my friend his "PhD in trolling"
- * @version 1.0.0
+ * @version 1.0.1
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/GrammarAlly/GrammarAlly.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/GrammarAlly/GrammarAlly.plugin.js
  */
