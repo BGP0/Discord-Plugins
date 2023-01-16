@@ -2,7 +2,7 @@
  * @name MassDelete
  * @author BGP
  * @description Delete as many messages by you as in your current channel's cache
- * @version 1.0.5
+ * @version 1.0.6
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/MassDeletePlugin/MassDelete.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/MassDeletePlugin/MassDelete.plugin.js
  */
@@ -55,7 +55,7 @@ module.exports = class MassDeletePlugin {
     }
 
 	async deleteMessages(messages, channelId) {
-		for (let message of messages.reverse()) {
+		for (let message of messages) {
 			console.log("Deleting: " + message.content)
 			ZeresPluginLibrary.DiscordModules.MessageActions.deleteMessage(channelId, message.id)
 			await new Promise(r => setTimeout(r, 1500))
