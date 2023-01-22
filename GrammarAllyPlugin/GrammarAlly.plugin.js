@@ -2,7 +2,7 @@
  * @name GrammarAlly
  * @author CAEC
  * @description This got my friend his "PhD in trolling"
- * @version 1.0.2
+ * @version 1.0.3
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/GrammarAlly/GrammarAlly.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/GrammarAlly/GrammarAlly.plugin.js
  */
@@ -121,7 +121,7 @@ module.exports = class GrammarAllyPlugin {
             if (word.includes(':')) return word
             
             // commonMistakes lol this code is awful
-            if (this.settings.commonMistakes) [["your", "you're"], ["their", "there"], ["much", "many"], ["then", "than"], ["too", "to"], ["lose", "loose"], ["peak", "peek"], ["affect", "effect"], ["its", "it's"], ["a lot", "alot"]].forEach(mistake => {
+            if (this.settings.commonMistakes) [["your", "you're"], ["their", "there"], ["much", "many"], ["then", "than"], ["too", "to"], ["lose", "loose"], ["peak", "peek"], ["affect", "effect"], ["affected", "effected"], ["but", "butt"], ["its", "it's"], ["a lot", "alot"]].forEach(mistake => {
                 if (word == mistake[0]) word = mistake[1]
                 else if (word == mistake[1]) word = mistake[0]
             })
