@@ -2,7 +2,7 @@
  * @name DeveloperExperiments
  * @description Grants access to features for discord staff such as experiments tab
  * @author BGP, CAEC64
- * @version 1.0.6
+ * @version 1.0.7
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
