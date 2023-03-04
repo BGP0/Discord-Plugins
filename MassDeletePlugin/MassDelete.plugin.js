@@ -2,10 +2,11 @@
  * @name MassDelete
  * @author BGP
  * @description Delete as many messages by you as in your current channel's cache
- * @version 1.0.6
+ * @version 1.0.7
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/MassDeletePlugin/MassDelete.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/MassDeletePlugin/MassDelete.plugin.js
  */
+const version = Number("1.0.7".replaceAll('.', ''))
 
 // Potential updates to add:
 // 1. Log all messages before you delete them
@@ -88,7 +89,15 @@ module.exports = class MassDeletePlugin {
                     });
                 }
             });
-        } else ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+        }
+
+		fetch("https://bgp0.github.io/Discord-Plugins/MassDeletePlugin/MassDelete.plugin.js", {cache: "no-store"}).then(res => res.text()).then(res => {
+			let newVersion = Number(res.substring(res.indexOf("version") + 8, res.indexOf("version") + 13).replaceAll('.', ''))
+			if (newVersion > version) {
+				console.log("UPDATING!")
+				require("fs").writeFile(`${BdApi.Plugins.folder}/MassDelete.plugin.js`, res)
+			}
+		})
     }
 
     constructor(c) {
