@@ -2,7 +2,7 @@
 My discord plugins, currently just for the developer experiments plugin
 
 # FUCK BETTERDISCORD
-The people in charge are evil, they are corrupted and payed by Discord themselves. This is why they now ban plugins like I make because discord doesnt't like them... And recently they **removed the updater from zereslib with NO WARNING to force devs to use the centralised system..** Sorry for everyone who has has their updates broken. Now I am using my own updater but it will most likely be broken soon when betterdiscord staff remove access to requests and file system..
+The people in charge are evil, they are corrupted and payed by Discord themselves. This is why they now ban (refuse to accept them on the centralised system) plugins like I make because discord doesnt't like them... And recently they **removed the updater from zereslib with NO WARNING to force devs to use the centralised system..** Sorry for everyone who has has their updates broken. Now I am using my own updater but it will most likely be broken soon when betterdiscord staff remove access to requests and file system..
 
 Does anyone know of any similar projects which have an actually good team behind it that isn't corrupt? If so please lmk and rewrite the plugins to be compatible. I guess its hard since bd has a monopoly as they already have all the plugins. maybe a software that is comptabible with bd plugins would be good.
 
