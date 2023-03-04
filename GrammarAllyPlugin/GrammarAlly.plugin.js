@@ -2,10 +2,11 @@
  * @name GrammarAlly
  * @author CAEC
  * @description This got my friend his "PhD in trolling"
- * @version 1.0.3
+ * @version 1.0.5
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/GrammarAlly/GrammarAlly.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/GrammarAlly/GrammarAlly.plugin.js
  */
+const version = Number("1.0.5".replaceAll('.', ''))
 
 module.exports = class GrammarAllyPlugin {
     start() {
@@ -38,7 +39,14 @@ module.exports = class GrammarAllyPlugin {
                     });
                 }
             });
-        } else ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+        }
+		fetch("https://bgp0.github.io/Discord-Plugins/GrammarAllyPlugin/GrammarAlly.plugin.js", {cache: "no-store"}).then(res => res.text()).then(res => {
+			let newVersion = Number(res.substring(res.indexOf("version") + 8, res.indexOf("version") + 13).replaceAll('.', ''))
+			if (newVersion > version) {
+				console.log("UPDATING!")
+				require("fs").writeFile(`${BdApi.Plugins.folder}/GrammarAlly.plugin.js`, res)
+			}
+		})
     }
 
     constructor(c) {
