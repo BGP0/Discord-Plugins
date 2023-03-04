@@ -6,6 +6,7 @@
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
+const version = Number("1.0.7".replaceAll('.', ''))
 
 function setDev(b) {
 	// Current method mostly by me, sets the staff flag and then reloads the developer experiments.
@@ -33,21 +34,13 @@ module.exports = class {
 	}
     
     load() {
-        if (!global.ZeresPluginLibrary) {
-            BdApi.showConfirmationModal("Library plugin is needed",
-                `ZeresPluginLibrary is missing. Please click Download Now to install it.`, {
-                confirmText: "Download",
-                cancelText: "Cancel",
-                onConfirm: () => {
-                    request.get("https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js", (error, response, body) => {
-                        if (error) {
-                            return electron.shell.openExternal("https://github.com/rauenzi/BDPluginLibrary");
-                        }
-                        require("fs").writeFileSync(path.join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"), body);
-                    });
-                }
-            });
-        } else ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.config.name, this.config.version, this.config.updateUrl)
+		fetch("https://bgp0.github.io/Discord-Plugins/ExperimentsPlugin/DeveloperExperiments.plugin.js", {cache: "no-store"}).then(res => res.text()).then(res => {
+			let newVersion = Number(res.substring(res.indexOf("version") + 8, res.indexOf("version") + 13).replaceAll('.', ''))
+			if (newVersion > version) {
+				console.log("UPDATING!")
+				require("fs").writeFile(`${BdApi.Plugins.folder}/DeveloperExperiments.plugin.js`, res)
+			}
+		})
     }
 
     constructor(c) {
