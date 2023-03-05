@@ -1,10 +1,8 @@
 # Discord-Plugins
 My discord plugins, currently just for the developer experiments plugin
+Its not on the official site because they consider it self bot or api spam when all my plugin does is delete messages every 1.5s lol.
 
-# FUCK BETTERDISCORD
-The people in charge are evil, they are corrupted and payed by Discord themselves. This is why they now ban (refuse to accept them on the centralised system) plugins like I make because discord doesnt't like them... And recently they **removed the updater from zereslib with NO WARNING to force devs to use the centralised system..** Sorry for everyone who has has their updates broken. Now I am using my own updater but it will most likely be broken soon when betterdiscord staff remove access to requests and file system..
-
-Does anyone know of any similar projects which have an actually good team behind it that isn't corrupt? If so please lmk and rewrite the plugins to be compatible. I guess its hard since bd has a monopoly as they already have all the plugins. maybe a software that is comptabible with bd plugins would be good.
+Recently the devs have removed the updater from zeres lib without warning but luckily because of people like me complaining they re-enabled it temporarily. But because it is only temporary I have written my own custom updater which will now be used. However this may break in the future if they decide to remove file system functionality or something. So if any of my plugins are broken, check if there is an update available on github and copy the code manually.
 
 # All my public plugins
 - [DeveloperExperiments](https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/) - Show the experiments in the settings menu
