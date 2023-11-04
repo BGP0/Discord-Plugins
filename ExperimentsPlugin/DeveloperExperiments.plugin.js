@@ -2,11 +2,11 @@
  * @name DeveloperExperiments
  * @description Grants access to features for discord staff such as experiments tab
  * @author BGP, CAEC64
- * @version 1.0.7
+ * @version 1.1.0
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/ExperimentsPlugin/DeveloperExperiments.plugin.js
  */
-const version = Number("1.0.7".replaceAll('.', ''))
+const version = Number("1.1.0".replaceAll('.', ''))
 
 function setDev(b) {
 	// Current method mostly by me, sets the staff flag and then reloads the developer experiments.
@@ -15,8 +15,9 @@ function setDev(b) {
 	window.webpackChunkdiscord_app.push([[ Math.random() ], {}, (req) => { // Weird thing to get loads of webpack data
 		var stuff = Object.values(req.c) // We don't care about the keys of the webpack data
 
-		let user = stuff.find(x => x.exports?.default?.getUsers).exports.default.__proto__.getCurrentUser()
-		let mall = Object.values(stuff.find(x => x.exports?.Z?._dispatcher).exports?.Z._dispatcher._actionHandlers._dependencyGraph.nodes) // Get a list of all the stores in discord.
+		let users = stuff.find(x => x.exports?.default?.getUsers).exports.default
+		let user = users.getCurrentUser()
+		let mall = Object.values(users._dispatcher._actionHandlers._dependencyGraph.nodes) // Get a list of all the "stores" in discord.
 
 		user.flags += b == true ? 1 : -1 // Add/Remove the staff key (2^0)
 		mall.find(x => x.name == "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]() // Open the store with our new key, idk how to close yet
