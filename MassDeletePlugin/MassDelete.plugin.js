@@ -2,11 +2,11 @@
  * @name MassDelete
  * @author BGP
  * @description Delete as many messages by you as in your current channel's cache
- * @version 1.0.7
+ * @version 1.1.0
  * @source https://github.com/BGP0/Discord-Plugins/blob/main/MassDeletePlugin/MassDelete.plugin.js
  * @updateUrl https://raw.githubusercontent.com/BGP0/Discord-Plugins/main/MassDeletePlugin/MassDelete.plugin.js
  */
-const version = Number("1.0.7".replaceAll('.', ''))
+const version = Number("1.1.0".replaceAll('.', ''))
 
 // Potential updates to add:
 // 1. Log all messages before you delete them
@@ -43,8 +43,8 @@ module.exports = class MassDeletePlugin {
             new ZeresPluginLibrary.Tooltip(this.channelLogButton, 'Delete Messages', { side: 'bottom' })
 
             try {
-                const parent = document.querySelector('div[class*="chat-"] div[class*="toolbar-"]')
-                const srch = parent.querySelector('div[class*="search-"]')
+                const parent = document.querySelector('div[class*="chat"] div[class*="toolbar"]')
+                const srch = parent.querySelector('div[class*="search"]')
                 parent.insertBefore(this.channelLogButton, srch)
             } catch (_) {
                 // This means the current page is not a discord channel
